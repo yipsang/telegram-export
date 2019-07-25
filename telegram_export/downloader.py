@@ -227,6 +227,9 @@ class Downloader:
         media_type, media_subtype = media_type[0], media_type[-1]
         if media_type not in ('photo', 'document'):
             return  # Only photos or documents are actually downloadable
+        if media_row[0] is None or media_row[1] is None or media_row[2] is None:
+            __log__.debug('removed media', media_row, 'media_id', media_id)
+            return
 
         formatter = defaultdict(
             str,
